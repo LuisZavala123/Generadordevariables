@@ -36,7 +36,9 @@ private static final long serialVersionUID = 1L;
     JPanel Panel1;
     JPanel Panel2;
     JPanel Panel3;
+    // Distribucion
     String f1="Normal";
+    // funcion
     String f2="Densidad";
     int salto=0;
     JButton btn1= new JButton("Densidad");
@@ -77,46 +79,63 @@ private static final long serialVersionUID = 1L;
 	    });
 	  }
 	
+	
+	// al precionar los botones
+	// unos cambian los datos a ingresar y definen la distribucion
+	// otros generenan las graficas
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource()==botones1[0]) {
 			f1="Normal";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[1]) {
 			f1="Exponencial";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[2]) {
 			f1="Uniforme";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[3]) {
 			f1="Poisson";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[4]) {
 			f1="Triangular";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[5]) {
 			f1="T Student";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[6]) {
 			f1="F Fisher";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[7]) {
 			f1="Hipergeométrica";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[8]) {
 			f1="Binomial";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[9]) {
 			f1="Chi-Cuadrado";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[10]) {
 			f1="Weibull";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[11]) {
 			f1="Geometrica";
+			crearbotones2();
 		}
 		if(arg0.getSource()==botones1[12]) {
 			f1="BinomialNegativa";
+			crearbotones2();
 		}
 		
 		if(arg0.getSource()==btn1) {
@@ -144,6 +163,7 @@ private static final long serialVersionUID = 1L;
 		
 	}
 	
+	// dibuja la interfaz
 	public Interfaz(String title) {
 	    super(title);
 	    Paneles();
@@ -152,6 +172,8 @@ private static final long serialVersionUID = 1L;
 	    tabla();
 	    
 	  }
+	
+	// dibuja los paneles
 	public void Paneles() {
 		 centralPanel = new JPanel();
 	     Panel1 = new JPanel();
@@ -184,6 +206,7 @@ private static final long serialVersionUID = 1L;
 	    this.setVisible(true);
 	}
 	
+	//agrega los botones de las distribuciones
 	public void crearbotones1() {
 		
 		for(int i =0;i<botones1.length;i++) {
@@ -193,8 +216,11 @@ private static final long serialVersionUID = 1L;
 		}
 	}
 	
+	// agrega botones de las distribuciones
 	public void crearbotones2() {
-		
+		if (Panel2.getComponentCount()!=0) {
+			Panel2.removeAll();
+		}
 		txt();
 		
 		Panel2.add(btn1);
@@ -209,6 +235,8 @@ private static final long serialVersionUID = 1L;
 		Panel2.add(btn4);
 		btn4.addActionListener(this);
 	}
+	
+	// agrega los cuadros de texto para los parametros
 private void txt() {
 		
 	lb3= new JLabel("cantidad");
@@ -243,11 +271,13 @@ private void txt() {
 			 lb1= new JLabel("Intentos");
 			Panel2.add(lb1);
 			txt1= new JTextField(20);
+			Panel2.add(txt1);
 			break;
 		case"Poisson":
 			 lb1= new JLabel("Lambda");
 			Panel2.add(lb1);
 			txt1= new JTextField(20);
+			Panel2.add(txt1);
 			break;
 		case"BinomialNegativa":
 			 lb1= new JLabel("Seguida");
@@ -263,7 +293,7 @@ private void txt() {
 	}
 	
 	
-	
+	// agrega las graficas
 	private void tabla() {
 		if (Panel3.getComponentCount()!=0) {
 			Panel3.remove(0);
@@ -285,16 +315,14 @@ private void txt() {
 	    this.setVisible(true);
 	}
 	
+	// Genera la grafica
 	  private DefaultCategoryDataset createDataset() {
 		  String regex = "-?\\d+";
 		  int cant =4000;
 		  if(txt3.getText().matches(regex)) {
 			  cant =Integer.parseInt(txt3.getText());
 		  }
-		  
-		  
-		  
-		  
+
 		  switch(f1) {
 		  case"Normal":
 			  if(txt1.getText().matches(regex)&&txt2.getText().matches(regex)) {
