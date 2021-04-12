@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import org.apache.commons.math3.distribution.GeometricDistribution;
 
 public class Metodomagico {
-	
+	// un objeto por cada distribucion
 	Normal normal= null;
 	Geometrica geometrica= null;
 	Poisson poisson= null;
@@ -15,7 +15,7 @@ public class Metodomagico {
 	public Metodomagico() {
 		
 	}
-	
+	// definiendo los parametros para los metodos
 	public void Normal(double media, double std) {
 		normal = new Normal(media,std);
 	}
@@ -31,7 +31,7 @@ public class Metodomagico {
 	public void BinomialNegativa(int seguida, double intentos) {
 		negativa = new BinomialNegativa(seguida,intentos);
 	}
-	
+	// regresa la probabilidad del dato
 	public double probabilidad(String distribucion,double dato) {
 		
 		switch (distribucion) {
@@ -61,7 +61,7 @@ public class Metodomagico {
 		return dato;
 		
 	}
-	
+	// regresa las probabilidades de los datos
 	public double[] probabilidad(String distribucion,double[] datos) {
 		
 		switch (distribucion) {
@@ -92,7 +92,7 @@ public class Metodomagico {
 		return null;
 		
 	}
-
+	// regresa la probabilidad acumulativa del dato
 public double acumulativa(String distribucion,double dato) {
 		
 		switch (distribucion) {
@@ -121,7 +121,7 @@ public double acumulativa(String distribucion,double dato) {
 		return 0;
 		
 	}
-	
+//regresa las probabilidades acumulativas de los datos
 public double[] acumulativa(String distribucion,double[] datos) {
 		
 		switch (distribucion) {
@@ -153,7 +153,7 @@ public double[] acumulativa(String distribucion,double[] datos) {
 		return null;
 		
 	}
-
+//regresa el inverso de la probabilidad
 public double inverso(String distribucion,double dato) {
 	
 	switch (distribucion) {
@@ -184,7 +184,7 @@ public double inverso(String distribucion,double dato) {
 	return 0;
 	
 }
-
+//regresa los inversos de las probabilidades
 public double[] inverso(String distribucion,double[] datos) {
 	
 	switch (distribucion) {
@@ -216,7 +216,7 @@ public double[] inverso(String distribucion,double[] datos) {
 }
 
 
-
+//regresa un grupo de datos para una distribucion 
 public double[] aletorio(String distribucion,int cantidad) {
 	
 	switch (distribucion) {
